@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         {
             butterAmount++;
             other.gameObject.SetActive(false);
+            ScoreManager.instance.addPoint();
         }
     }
 }
