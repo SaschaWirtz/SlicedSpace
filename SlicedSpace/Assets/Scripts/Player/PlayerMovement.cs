@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpPressed = false;
     private bool isOnGround = true;
     private bool isSwitched = false;
+    private int butterAmount;
 
     // Start is called before the first frame update
     void Start()
     {
+        butterAmount = 0;
         rb = this.GetComponent<Rigidbody>();
         View_controller.OnViewChanged += switchOrientation;
     }
@@ -29,14 +31,20 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpHight);
             isOnGround = false;
         }else if(Input.GetButtonUp("Jump")) {
-            rb.drag = 2;
-            rb.mass = 2;
+            rb.drag = 1;
+            rb.mass = 1;
+            //rb.AddForce (0,10000,0);
         }
         horizontalInput = Input.GetAxis("Horizontal");
         if(isSwitched) {
             transform.Translate(Vector3.back * Time.deltaTime * speed * horizontalInput);
         }else {
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        }
+
+        if(Input.GetKeyDown(KeyCode.C)) 
+        {
+            Debug.Log("You have " + butterAmount + " x Butter");
         }
         
     }
@@ -47,5 +55,13 @@ public class PlayerMovement : MonoBehaviour
     }
     private void switchOrientation() {
         isSwitched = !isSwitched;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.tag=="Butter") 
+        {
+            butterAmount++;
+            other.gameObject.SetActive(false);
+        }
     }
 }
