@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4370447, g: 0.48474562, b: 0.56500775, a: 1}
+  m_IndirectSpecularColor: {r: 0.43704465, g: 0.48474592, b: 0.5650078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -208,7 +208,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 64
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -437,7 +437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121.899994, y: -41.3788}
+  m_AnchoredPosition: {x: 716.5, y: -41.3788}
   m_SizeDelta: {x: 200.2, y: 82.7577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &610855585
@@ -629,7 +629,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 83.297, y: -30, z: 0}
 --- !u!1 &809964221
 GameObject:
@@ -1366,7 +1366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125.399994, y: -43.732483}
+  m_AnchoredPosition: {x: 720, y: -43.732483}
   m_SizeDelta: {x: 69.965, y: 49.464996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850765435
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 1880270376}
   - component: {fileID: 1880270378}
   - component: {fileID: 1880270379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1485,13 +1485,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880270371}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.046, y: 2.88, z: 1.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1880270376
 Rigidbody:
@@ -1523,6 +1523,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHight: 850
   speed: 10
+  planeThickness: 0.5
+  planeDimensionsHeight: 10000
+  planeDimensionsWidth: 10000
 --- !u!65 &1880270379
 BoxCollider:
   m_ObjectHideFlags: 0
