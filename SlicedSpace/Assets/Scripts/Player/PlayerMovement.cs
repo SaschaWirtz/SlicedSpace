@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -53,7 +54,11 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(Vector3.back * Time.deltaTime * speed * horizontalInput);
         }else {
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-        }        
+        }
+
+        if (Input.GetButtonDown("PauseGame")) {
+            SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+        }
     }
 
     private void OnCollisionEnter(Collision collision) {
