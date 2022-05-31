@@ -65,15 +65,23 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground")){
             isOnGround = true;
         } else if(collision.gameObject.name == "Ground") {
-            transform.position = this.startPosition;
-            rb.velocity = new Vector3(0f,0f,0f);
-            rb.angularVelocity = new Vector3(0f,0f,0f);
+            this.loseLifeReset();
         }
     }
     private void switchOrientation() {
         isSwitched = !isSwitched;
 
         this.reset2DVisibility();
+    }
+
+    private void loseLifeReset() {
+        transform.position = this.startPosition;
+        rb.velocity = new Vector3(0f,0f,0f);
+        rb.angularVelocity = new Vector3(0f,0f,0f);
+        ScoreManager.instance.loseLife();
+        if (ScoreManager.instance.isGameOver()) {
+            SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+        }
     }
 
     private void OnTriggerEnter(Collider collision) {
