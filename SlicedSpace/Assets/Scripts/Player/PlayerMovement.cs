@@ -108,6 +108,9 @@ public class PlayerMovement : MonoBehaviour
             ));
         foreach (Collider collider in colliders) {
             collider.gameObject.layer = this.layer2D;
+            foreach (Transform child in collider.gameObject.transform) {
+                child.gameObject.layer = this.layer2D;
+            }
         }
     }
 }
