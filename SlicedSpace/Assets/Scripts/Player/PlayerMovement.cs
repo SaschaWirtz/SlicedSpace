@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float planeThickness = 0.5f;
     public float planeDimensionsHeight = 10000f;
     public float planeDimensionsWidth = 10000f;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         this.startPosition = transform.position;
         this.layer2D = LayerMask.NameToLayer("2D");
         this.layerGeneral = LayerMask.NameToLayer("Default");
+        this.animator = GetComponent<Animator>();
 
         this.reset2DVisibility();
     }
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {     
         if(Input.GetButtonDown("Jump") && isOnGround) {
+            this.animator.SetBool("Jumping", true);
             rb.drag = 1;
             rb.mass = 1;
             rb.AddForce(Vector3.up * jumpHight);
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         horizontalInput = Input.GetAxis("Horizontal");
+        this.animator.SetBool("Walking", horizontalInput != 0);
 
         if(isSwitched) {
             transform.Translate(Vector3.back * Time.deltaTime * speed * horizontalInput);
@@ -63,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.CompareTag("Ground")){
+            this.animator.SetBool("Jumping", false);
             isOnGround = true;
         } else if(collision.gameObject.name == "Ground") {
             this.loseLifeReset();
