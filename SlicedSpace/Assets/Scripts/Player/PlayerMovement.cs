@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public float planeDimensionsHeight = 10000f;
     public float planeDimensionsWidth = 10000f;
     private Animator animator;
+    private bool isPositiveMovement = true;
 
     // Start is called before the first frame update
     void Start()
@@ -54,11 +55,13 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         this.animator.SetBool("Walking", horizontalInput != 0);
 
-        if(isSwitched) {
-            transform.Translate(Vector3.back * Time.deltaTime * speed * horizontalInput);
-        }else {
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        if(horizontalInput > 0 != this.isPositiveMovement && horizontalInput != 0) {
+            this.transform.Rotate(0f, this.isPositiveMovement? 180f: -180f, 0f);
+            this.isPositiveMovement = !this.isPositiveMovement;
         }
+
+        transform.Translate((this.isPositiveMovement? Vector3.forward : Vector3.back) * Time.deltaTime * speed * horizontalInput);
+
 
         if (Input.GetButtonDown("PauseGame")) {
             SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void switchOrientation() {
         isSwitched = !isSwitched;
+        this.transform.Rotate(0F, this.isSwitched? 90f : -90f , 0f);
 
         this.reset2DVisibility();
     }

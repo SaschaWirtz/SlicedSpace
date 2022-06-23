@@ -8,13 +8,13 @@ public class View_controller : MonoBehaviour
     public delegate void ViewChanged();
     public static event ViewChanged OnViewChanged;
 
-    private ParentConstraint pc;
+    private PositionConstraint pc;
     private bool isSwitched = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        pc = this.GetComponent<ParentConstraint>();
+        pc = this.GetComponent<PositionConstraint>();
     }
 
     // Update is called once per frame
@@ -24,11 +24,11 @@ public class View_controller : MonoBehaviour
             OnViewChanged();
             isSwitched = !isSwitched;
             if(isSwitched) {
-                pc.SetTranslationOffset(0, new Vector3(x: -10, y: 0, z: 0));
-                pc.SetRotationOffset(0, new Vector3(x: 0, y: 90, z: 0));
+                pc.translationOffset = new Vector3(x: -10, y: 0, z: 0);
+                this.transform.Rotate(0f, 90f, 0f);
             }else {
-                pc.SetTranslationOffset(0, new Vector3(x: 0, y: 0, z: -10));
-                pc.SetRotationOffset(0, new Vector3(x: 0, y: 0, z: 0));
+                pc.translationOffset =  new Vector3(x: 0, y: 0, z: -10);
+                this.transform.Rotate(0f, -90f, 0f);
             }
             
         }
