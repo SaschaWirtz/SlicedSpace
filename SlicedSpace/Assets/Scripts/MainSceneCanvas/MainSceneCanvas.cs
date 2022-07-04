@@ -7,10 +7,17 @@ using UnityEngine.SceneManagement;
 public class MainSceneCanvas : MonoBehaviour
 {
     GameObject[] uiElements;
+    GameObject startButtonClicked;
+    GameObject exitButtonClicked;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.startButtonClicked = GameObject.Find("start-button-clicked");
+        this.exitButtonClicked = GameObject.Find("exit-button-clicked");
+        this.startButtonClicked.SetActive(false);
+        this.exitButtonClicked.SetActive(false);
+
         if (GlobalInformation.getInstance().introPlayed) {
             GameObject
                 .Find("IntroPlayer")
@@ -45,10 +52,16 @@ public class MainSceneCanvas : MonoBehaviour
     }
 
     public void exitGame() {
+        GameObject.Find("exit-button").SetActive(false);
+        this.exitButtonClicked.SetActive(true);
+        new WaitForSeconds(0.5f);
         Application.Quit();
     }
 
     public void startGame() {
+        GameObject.Find("start-button").SetActive(false);
+        this.startButtonClicked.SetActive(true);
+        new WaitForSeconds(0.5f);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }
