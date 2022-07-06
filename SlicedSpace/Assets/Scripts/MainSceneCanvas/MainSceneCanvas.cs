@@ -9,10 +9,17 @@ public class MainSceneCanvas : MonoBehaviour
     GameObject[] uiElements;
     GameObject startButtonClicked;
     GameObject exitButtonClicked;
+    AudioSource[] sounds;
+    AudioSource popcornBag_crumble;
+    AudioSource doorOpen_exit;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.sounds = GetComponents<AudioSource>();
+        this.popcornBag_crumble = this.sounds[0];
+        this.doorOpen_exit = this.sounds[1];
+
         this.startButtonClicked = GameObject.Find("start-button-clicked");
         this.exitButtonClicked = GameObject.Find("exit-button-clicked");
         this.startButtonClicked.SetActive(false);
@@ -51,17 +58,27 @@ public class MainSceneCanvas : MonoBehaviour
 
     }
 
-    public void exitGame() {
+    void exitGame() {
+        StartCoroutine(exit());
+    }
+
+    IEnumerator exit() {
+        this.doorOpen_exit.Play();
         GameObject.Find("exit-button").SetActive(false);
         this.exitButtonClicked.SetActive(true);
-        new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         Application.Quit();
     }
 
-    public void startGame() {
+    void startGame() {
+        StartCoroutine(start());
+    }
+
+    IEnumerator start() {
+        this.popcornBag_crumble.Play();
         GameObject.Find("start-button").SetActive(false);
         this.startButtonClicked.SetActive(true);
-        new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }
