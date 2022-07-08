@@ -19,6 +19,16 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    void Update() {
+        if(Input.GetButtonDown("Disable/Enable Map")) {
+            GameObject.Find("BorderMask").GetComponent<Image>().enabled = !GameObject.Find("BorderMask").GetComponent<Image>().isActiveAndEnabled;
+            GameObject.Find("MapMask").GetComponent<Image>().enabled = !GameObject.Find("MapMask").GetComponent<Image>().isActiveAndEnabled;
+            GameObject.Find("MiniMapBorder").GetComponent<Image>().enabled = !GameObject.Find("MiniMapBorder").GetComponent<Image>().isActiveAndEnabled;
+            GameObject.Find("MiniMap").GetComponent<RawImage>().enabled = !GameObject.Find("MiniMap").GetComponent<RawImage>().isActiveAndEnabled;
+            print("efgh");
+        }
+    }
+
     private void Awake() {
         instance = this;
         this.maxScore = GameObject.FindGameObjectsWithTag("Butter").Length;
