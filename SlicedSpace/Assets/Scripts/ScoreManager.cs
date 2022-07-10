@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public Text scoreText;
+    [SerializeField] public bool blockSwitch = false;
 
     private int score;
     private int maxScore;
@@ -20,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     void Update() {
-        if(Input.GetButtonDown("Disable/Enable Map")) {
+        if(Input.GetButtonDown("Disable/Enable Map") && !this.blockSwitch) {
 
             GameObject.Find("BorderMask").GetComponent<Image>().enabled = !GameObject.Find("BorderMask").GetComponent<Image>().isActiveAndEnabled;
             GameObject.Find("MapMask").GetComponent<Image>().enabled = !GameObject.Find("MapMask").GetComponent<Image>().isActiveAndEnabled;

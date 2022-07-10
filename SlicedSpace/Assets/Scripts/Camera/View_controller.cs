@@ -7,6 +7,7 @@ public class View_controller : MonoBehaviour
 {
     public delegate void ViewChanged();
     public static event ViewChanged OnViewChanged;
+    [SerializeField] public bool blockSwitch = false;
 
     private PositionConstraint pc;
     private bool isSwitched = false;
@@ -20,7 +21,7 @@ public class View_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("TurnPlane")) {
+        if(Input.GetButtonDown("TurnPlane") && !this.blockSwitch) {
             OnViewChanged();
             isSwitched = !isSwitched;
             if(isSwitched) {

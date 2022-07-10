@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float planeDimensionsWidth = 10000f;
     private Animator animator;
     private bool isPositiveMovement = true;
+    public bool blockSwitch = false;
 
     // Start is called before the first frame update
     void Start()
@@ -77,10 +78,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void switchOrientation() {
-        isSwitched = !isSwitched;
-        this.transform.Rotate(0F, this.isSwitched? 90f : -90f , 0f);
+        if(!this.blockSwitch) {
+            isSwitched = !isSwitched;
+            this.transform.Rotate(0F, this.isSwitched? 90f : -90f , 0f);
 
-        this.reset2DVisibility();
+            this.reset2DVisibility();
+        }
     }
 
     private void loseLifeReset() {
