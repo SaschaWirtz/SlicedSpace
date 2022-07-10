@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour
             GameObject.Find("MapMask").GetComponent<Image>().enabled = !GameObject.Find("MapMask").GetComponent<Image>().isActiveAndEnabled;
             GameObject.Find("MiniMapBorder").GetComponent<Image>().enabled = !GameObject.Find("MiniMapBorder").GetComponent<Image>().isActiveAndEnabled;
             GameObject.Find("MiniMap").GetComponent<RawImage>().enabled = !GameObject.Find("MiniMap").GetComponent<RawImage>().isActiveAndEnabled;
-            print("efgh");
         }
     }
 
