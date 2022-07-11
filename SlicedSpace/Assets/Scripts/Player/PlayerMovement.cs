@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private bool isPositiveMovement = true;
     public bool blockSwitch = false;
+    public bool blockPlayerInput = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,32 +42,37 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {     
-        if(Input.GetButtonDown("Jump") && isOnGround) {
-            this.animator.SetBool("Jumping", true);
-            rb.drag = 1;
-            rb.mass = 1;
-            rb.AddForce(Vector3.up * jumpHight);
-            isOnGround = false;
-        }else if(Input.GetButtonUp("Jump")) {
-            rb.drag = 1;
-            rb.mass = 1;
-            //rb.AddForce (0,10000,0);
+        if(!this.blockPlayerInput) {
+            if(Input.GetButtonDown("Jump") && isOnGround) {
+                this.animator.SetBool("Jumping", true);
+                rb.drag = 1;
+                rb.mass = 1;
+                rb.AddForce(Vector3.up * jumpHight);
+                isOnGround = false;
+            }else if(Input.GetButtonUp("Jump")) {
+                rb.drag = 1;
+                rb.mass = 1;
+                //rb.AddForce (0,10000,0);
+            }
+
+            horizontalInput = Input.GetAxis("Horizontal");
+            this.animator.SetBool("Walking", horizontalInput != 0);
+
+            if(horizontalInput > 0 != this.isPositiveMovement && horizontalInput != 0) {
+                this.transform.Rotate(0f, this.isPositiveMovement? 180f: -180f, 0f);
+                this.isPositiveMovement = !this.isPositiveMovement;
+            }
+
+            transform.Translate((this.isPositiveMovement? Vector3.forward : Vector3.back) * Time.deltaTime * speed * horizontalInput);
+
+
+            if (Input.GetButtonDown("PauseGame")) {
+                SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+            }
+        }else {
+            this.animator.SetBool("Walking", false);
         }
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        this.animator.SetBool("Walking", horizontalInput != 0);
-
-        if(horizontalInput > 0 != this.isPositiveMovement && horizontalInput != 0) {
-            this.transform.Rotate(0f, this.isPositiveMovement? 180f: -180f, 0f);
-            this.isPositiveMovement = !this.isPositiveMovement;
-        }
-
-        transform.Translate((this.isPositiveMovement? Vector3.forward : Vector3.back) * Time.deltaTime * speed * horizontalInput);
-
-
-        if (Input.GetButtonDown("PauseGame")) {
-            SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
-        }
     }
 
     private void OnCollisionEnter(Collision collision) {
