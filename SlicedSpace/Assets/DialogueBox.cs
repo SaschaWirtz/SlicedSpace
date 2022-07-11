@@ -14,7 +14,7 @@ public class DialogueBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.Find("DialogueBox").GetComponent<Image>().enabled == true && Input.anyKeyDown) {
+        if(Input.anyKeyDown) {
             FindObjectsOfType<DialogueManager>()[0].DisplayNextSentence();
         }
     }

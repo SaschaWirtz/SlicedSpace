@@ -2546,6 +2546,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6939459338435522019, guid: 4c7fd3ca2122a074c8f51fdee0fa1182, type: 3}
   m_PrefabInstance: {fileID: 1426193742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1300236355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 471279320001782396, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
+  m_PrefabInstance: {fileID: 2040351712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1300236359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300236355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3.44, z: 3}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1001 &1324781416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4080,6 +4098,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
+--- !u!1 &2058231912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9087842220917287003, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
+  m_PrefabInstance: {fileID: 9087842221250337808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2058231913
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058231912}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a503a4b6f69c35a43bf05b33b7024071, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &2070677679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6939459338435522019, guid: 4c7fd3ca2122a074c8f51fdee0fa1182, type: 3}
@@ -4186,6 +4229,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1546357930}
     m_Modifications:
+    - target: {fileID: 9087842220334236760, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087842220741248434, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2058231913}
     - target: {fileID: 9087842220917287003, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
       propertyPath: m_Name
       value: DialogueBox
@@ -4273,6 +4324,14 @@ PrefabInstance:
     - target: {fileID: 9087842220917287004, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087842220917287007, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087842221052700640, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9287437e3fbed4796daf5c8a1192d2, type: 3}

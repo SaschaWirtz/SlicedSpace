@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     public Text nameText;
     public Text dialogueText;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +19,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue) {
         FindObjectsOfType<PlayerMovement>()[0].blockPlayerInput = true;
-        GameObject.Find("DialogueBox").GetComponent<Image>().enabled = true;
-        GameObject.Find("NameText").GetComponent<Text>().enabled = true;
-        GameObject.Find("DialogueText").GetComponent<Text>().enabled = true;
+        this.animator.SetBool("IsOpen", true);
+
         this.nameText.text = dialogue.name;
 
         this.sentences.Clear();
@@ -40,18 +40,25 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        this.dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
     }
 
     private void EndDialogue() {
         StartCoroutine(this.enablePlayerInput());
-        GameObject.Find("DialogueBox").GetComponent<Image>().enabled = false;
-        GameObject.Find("NameText").GetComponent<Text>().enabled = false;
-        GameObject.Find("DialogueText").GetComponent<Text>().enabled = false;
+        this.animator.SetBool("IsOpen", false);
     }
 
     private IEnumerator enablePlayerInput() {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
         FindObjectsOfType<PlayerMovement>()[0].blockPlayerInput = false;
+    }
+
+    private IEnumerator TypeSentence (string sentence) {
+        this.dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray()) {
+            this.dialogueText.text += letter;
+            yield return null;
+        }
     }
 }
