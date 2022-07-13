@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum TutorialType{
+    noTutorial,
+    movementTutorial,
+    mapTutorial
+}
+
 public class DialogueManager : MonoBehaviour
 {
-
     private Queue<string> sentences;
     public Text nameText;
     public Text dialogueText;
     public Animator animator;
+    private TutorialType tutorialType = TutorialType.noTutorial;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +23,17 @@ public class DialogueManager : MonoBehaviour
         this.sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue) {
+    void Update() {
+        if(Input.anyKeyDown) {
+            GameObject.Find("Panel").GetComponent<Image>().enabled = false;
+            GameObject.Find("Movement").GetComponent<Image>().enabled = false;
+            GameObject.Find("Map").GetComponent<Image>().enabled = false;
+        }
+    }
+
+    public void StartDialogue(Dialogue dialogue, TutorialType tutorialType) {
         FindObjectsOfType<PlayerMovement>()[0].blockPlayerInput = true;
+        this.tutorialType = tutorialType;
         this.animator.SetBool("IsOpen", true);
 
         this.nameText.text = dialogue.name;
@@ -45,8 +60,23 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void EndDialogue() {
-        StartCoroutine(this.enablePlayerInput());
         this.animator.SetBool("IsOpen", false);
+        switch (this.tutorialType)
+        {
+            case TutorialType.movementTutorial:
+                GameObject.Find("Panel").GetComponent<Image>().enabled = true;
+                GameObject.Find("Movement").GetComponent<Image>().enabled = true;
+                break;
+            case TutorialType.mapTutorial:
+                GameObject.Find("Panel").GetComponent<Image>().enabled = true;
+                GameObject.Find("Map").GetComponent<Image>().enabled = true;
+                break;
+            default:
+            break;
+        }
+        this.tutorialType = TutorialType.noTutorial;
+        StartCoroutine(this.enablePlayerInput());
+
     }
 
     private IEnumerator enablePlayerInput() {

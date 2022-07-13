@@ -28,13 +28,13 @@ public class PopcornMachine : MonoBehaviour
 
     private void transition() {
         if(ScoreManager.instance.requirementCheck()) {
-            FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.dialogueEnoughButter);
+            FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.dialogueEnoughButter, TutorialType.noTutorial);
             Application.Quit();
         }else {
             GameObject.Find("Player").GetComponent<PlayerMovement>().blockSwitch = false;
             GameObject.Find("Canvas").GetComponent<ScoreManager>().blockSwitch = false;
             GameObject.Find("Camera_2D-View").GetComponent<View_controller>().blockSwitch = false;
-            FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.dialogueNotEnoughButter);
+            FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.dialogueNotEnoughButter, TutorialType.mapTutorial);
         }
     }
 }

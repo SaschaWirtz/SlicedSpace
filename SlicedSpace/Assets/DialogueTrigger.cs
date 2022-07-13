@@ -9,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision) {
         if(collision.gameObject.CompareTag("Player") && !this.played) {
-            FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.dialogue);
+            FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.dialogue, TutorialType.noTutorial);
             this.played = true;
         }
     }

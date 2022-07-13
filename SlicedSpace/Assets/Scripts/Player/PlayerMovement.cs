@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isPositiveMovement = true;
     public bool blockSwitch = false;
     public bool blockPlayerInput = false;
+    public Dialogue firstDialog;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         this.animator = GetComponent<Animator>();
 
         this.reset2DVisibility();
+
+        FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.firstDialog, TutorialType.movementTutorial);
     }
 
     // Update is called once per frame
