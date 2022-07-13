@@ -11,6 +11,7 @@ public class View_controller : MonoBehaviour
 
     private PositionConstraint pc;
     private bool isSwitched = false;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +22,17 @@ public class View_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("TurnPlane") && !this.blockSwitch) {
+        if(Input.GetButtonDown("TurnPlane") && !this.blockSwitch && FindObjectsOfType<PlayerMovement>()[0].isOnGround) {
             OnViewChanged();
             isSwitched = !isSwitched;
             if(isSwitched) {
-                pc.translationOffset = new Vector3(x: -10, y: 0, z: 0);
-                this.transform.Rotate(0f, 90f, 0f);
+                this.animator.SetBool("Turned", true);
+                // pc.translationOffset = new Vector3(x: -10, y: 0, z: 0);
+                // this.transform.Rotate(0f, 90f, 0f);
             }else {
-                pc.translationOffset =  new Vector3(x: 0, y: 0, z: -10);
-                this.transform.Rotate(0f, -90f, 0f);
+                this.animator.SetBool("Turned", false);
+                // pc.translationOffset =  new Vector3(x: 0, y: 0, z: -10);
+                // this.transform.Rotate(0f, -90f, 0f);
             }
             
         }

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public float speed = 5.0f;
     private float horizontalInput;
-    private bool isOnGround = true;
+    public bool isOnGround = true;
     private bool isSwitched = false;
     private int butterAmount;
     private Vector3 startPosition;
