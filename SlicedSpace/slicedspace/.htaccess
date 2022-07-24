@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "swprojects"
-AuthUserFile "/users/swprojects/.htpasswd"
-Require valid-user
