@@ -29,16 +29,12 @@ public class MainSceneCanvas : MonoBehaviour
             GameObject
                 .Find("IntroPlayer")
                 .GetComponent<VideoPlayer>().Stop();
-
-            GameObject
-                .Find("IntroPlayer")
-                .GetComponent<GameObject>().SetActive(false);
         } else {
             uiElements = GameObject.FindGameObjectsWithTag("UIElement");
             foreach(GameObject uiElement in uiElements) {
                 uiElement.SetActive(false);
             }
-
+            
             GameObject
                 .Find("IntroPlayer")
                 .GetComponent<VideoPlayer>()

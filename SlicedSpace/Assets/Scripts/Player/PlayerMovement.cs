@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
         this.reset2DVisibility();
 
         FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.firstDialog, TutorialType.movementTutorial);
+    }
+
+    void OnDestroy() {
+        View_controller.OnViewChanged -= switchOrientation;
     }
 
     // Update is called once per frame
@@ -113,8 +118,9 @@ public class PlayerMovement : MonoBehaviour
             ScoreManager.instance.addPoint();
         }
     }
-
-    private async Task reset2DVisibility() {
+    
+    private async void reset2DVisibility() {
+        await Task.Delay(1);
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         foreach (GameObject currentObject in allObjects) {
             if (!currentObject.CompareTag("Player")) {
