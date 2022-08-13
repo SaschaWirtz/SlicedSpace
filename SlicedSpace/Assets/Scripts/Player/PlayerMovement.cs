@@ -108,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
         if (ScoreManager.instance.isGameOver()) {
             SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
         }
+
+	this.reset2DVisibility();
     }
 
     private void OnTriggerEnter(Collider collision) {
