@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.53323597, g: 0.6618828, b: 0.88021016, a: 1}
+  m_IndirectSpecularColor: {r: 0.5332445, g: 0.66187847, b: 0.88020927, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6110,6 +6110,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2269391349377760094, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186643679983037193, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335904487495429733, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208684875718612343, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115463537885296135, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8635623010090221428, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6153,6 +6173,10 @@ PrefabInstance:
     - target: {fileID: 8635623010090221428, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686519095286037751, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8979111076208420291, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_audioClip
