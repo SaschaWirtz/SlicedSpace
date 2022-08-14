@@ -5,6 +5,8 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
@@ -26,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public bool blockSwitch = false;
     public bool blockPlayerInput = false;
     public Dialogue firstDialog;
+
+    float lastTime;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             if (Input.GetButtonDown("PauseGame")) {
-                SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+                PauseMenu.P1.Pause();
             }
         }else {
             this.animator.SetBool("Walking", false);
@@ -83,12 +87,17 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    
+
+    private async void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.CompareTag("Ground")){
             this.animator.SetBool("Jumping", false);
             isOnGround = true;
         } else if(collision.gameObject.name == "Ground") {
             this.loseLifeReset();
+            blockPlayerInput = true;
+            await Task.Delay(2000);
+            blockPlayerInput = false;
         }
     }
     private void switchOrientation() {
