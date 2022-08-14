@@ -13,6 +13,8 @@ public class MainSceneCanvas : MonoBehaviour
     AudioSource popcornBag_crumble;
     AudioSource doorOpen_exit;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,7 @@ public class MainSceneCanvas : MonoBehaviour
 
     }
 
-    void exitGame() {
+    public void exitGame() {
         StartCoroutine(exit());
     }
 
@@ -66,7 +68,7 @@ public class MainSceneCanvas : MonoBehaviour
         Application.Quit();
     }
 
-    void startGame() {
+    public void startGame() {
         StartCoroutine(start());
     }
 
@@ -76,5 +78,9 @@ public class MainSceneCanvas : MonoBehaviour
         this.startButtonClicked.SetActive(true);
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+    }
+
+    public void credits(){
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
     }
 }

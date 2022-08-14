@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(0f,0f,0f);
         rb.angularVelocity = new Vector3(0f,0f,0f);
         ScoreManager.instance.loseLife();
+        //GameOver Scene
         if (ScoreManager.instance.isGameOver()) {
             SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
         }
