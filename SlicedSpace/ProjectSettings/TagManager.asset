@@ -8,6 +8,7 @@ TagManager:
   - Butter
   - UIElement
   - PopcornMachine
+  - Plane
   layers:
   - Default
   - TransparentFX

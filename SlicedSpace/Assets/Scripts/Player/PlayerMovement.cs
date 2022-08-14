@@ -145,8 +145,14 @@ public class PlayerMovement : MonoBehaviour
             this.isSwitched ? this.planeDimensionsWidth : this.planeThickness
             ));
         foreach (Collider collider in colliders) {
+            if(collider.gameObject.CompareTag("Plane")) {
+                continue;
+            }
             collider.gameObject.layer = this.layer2D;
             foreach (Transform child in collider.gameObject.transform) {
+                if(collider.gameObject.CompareTag("Plane")) {
+                    continue;
+                }
                 child.gameObject.layer = this.layer2D;
             }
         }
