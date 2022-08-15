@@ -87,7 +87,12 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    
+    public void bounce() {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.AddForce(Vector3.up * jumpHight/1.5f);
+        isOnGround = true;
+    }
 
     private async void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.CompareTag("Ground")){
@@ -109,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void loseLifeReset() {
+    public void loseLifeReset() {
         transform.position = this.startPosition;
         rb.velocity = new Vector3(0f,0f,0f);
         rb.angularVelocity = new Vector3(0f,0f,0f);
