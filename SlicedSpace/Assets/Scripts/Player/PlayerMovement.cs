@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         ScoreManager.instance.loseLife();
         //GameOver Scene
         if (ScoreManager.instance.isGameOver()) {
-            SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
 
 	this.reset2DVisibility();
