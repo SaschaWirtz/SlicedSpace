@@ -9726,16 +9726,20 @@ PrefabInstance:
       value: Cornlio
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
+      propertyPath: dialogueEnoughButter.nextScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueEnoughButter.sentences.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueEnoughButter.sentences.Array.data[0]
-      value: Yes, now i have enough butter.
+      value: Yes, i have enough butter.
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueEnoughButter.sentences.Array.data[1]
-      value: I am finaly able to become deliciouse popcorn.
+      value: I am able to become deliciouse popcorn.
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueEnoughButter.sentences.Array.data[2]
@@ -9743,11 +9747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueNotEnoughButter.sentences.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueNotEnoughButter.sentences.Array.data[0]
-      value: Oh no! I don't have enough butter yet to become delicious popcorn.
+      value: Oh no! I don't have enough butter to become delicious popcorn.
       objectReference: {fileID: 0}
     - target: {fileID: 741752373535036834, guid: a3c99e4c388d22346a25cb6f0190c33d, type: 3}
       propertyPath: dialogueNotEnoughButter.sentences.Array.data[1]
@@ -10181,6 +10185,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8979111076208420289, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8804773703675141687, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
     - target: {fileID: 8979111076208420291, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -10199,11 +10207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979111076208420300, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: firstDialog.sentences.Array.data[0]
-      value: A good day to become popcorn.
+      value: A new day, a new portion of popcorn.
       objectReference: {fileID: 0}
     - target: {fileID: 8979111076208420300, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: firstDialog.sentences.Array.data[1]
-      value: Let's see if i can find butter to make me even tastier.
+      value: Gonna get ready for movie night.
       objectReference: {fileID: 0}
     - target: {fileID: 8979111076208420302, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_Name

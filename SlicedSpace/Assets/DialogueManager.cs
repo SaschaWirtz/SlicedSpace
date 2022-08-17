@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum TutorialType{
     noTutorial,
@@ -16,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Animator animator;
     private TutorialType tutorialType = TutorialType.noTutorial;
+    private bool nextScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void StartDialogue(Dialogue dialogue, TutorialType tutorialType) {
+        this.nextScene = dialogue.nextScene;
         FindObjectsOfType<PlayerMovement>()[0].blockPlayerInput = true;
         this.tutorialType = tutorialType;
         this.animator.SetBool("IsOpen", true);
@@ -76,7 +79,9 @@ public class DialogueManager : MonoBehaviour
         }
         this.tutorialType = TutorialType.noTutorial;
         StartCoroutine(this.enablePlayerInput());
-
+        if(this.nextScene) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private IEnumerator enablePlayerInput() {

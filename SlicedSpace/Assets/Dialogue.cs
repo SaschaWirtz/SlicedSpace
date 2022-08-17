@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dialogue
 {
     public string name;
+    public bool nextScene = false;
 
     [NonReorderable]
     [TextArea(3, 10)]
