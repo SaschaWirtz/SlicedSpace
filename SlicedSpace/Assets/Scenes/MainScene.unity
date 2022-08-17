@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
+  outputName: SoundsVolume
 --- !u!1 &461778471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,6 +2690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
+  outputName: MusicVolume
 --- !u!1 &1817447020
 GameObject:
   m_ObjectHideFlags: 0
