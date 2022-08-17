@@ -56,7 +56,9 @@ public class EnemyMovement : MonoBehaviour
                 animator.SetBool("Dieing", true);
                 transform.Find("HitBox").GetComponent<HitBoxDetection>().destroy();
                 transform.Find("HurtBox").GetComponent<HitBoxDetection>().destroy();
+                this.speed = 0;
                 GameObject.Find("Player").GetComponent<PlayerMovement>().bounce();
+                Destroy(gameObject, 2);
             }else if(transform.Find("HurtBox").GetComponent<HitBoxDetection>().IsHit()) {
                 GameObject.Find("Player").GetComponent<PlayerMovement>().loseLifeReset();
                 transform.Find("HitBox").GetComponent<HitBoxDetection>().reset();
