@@ -8129,7 +8129,7 @@ PrefabInstance:
       objectReference: {fileID: -8804773703675141687, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
     - target: {fileID: 8979111076208420291, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8979111076208420291, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_audioClip
