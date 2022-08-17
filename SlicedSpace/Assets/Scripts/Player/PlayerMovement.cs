@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public bool blockSwitch = false;
     public bool blockPlayerInput = false;
     public Dialogue firstDialog;
+    public TutorialType tutorialType = TutorialType.noTutorial;
 
     float lastTime;
 
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         this.reset2DVisibility();
 
-        FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.firstDialog, TutorialType.movementTutorial);
+        FindObjectsOfType<DialogueManager>()[0].StartDialogue(this.firstDialog, this.tutorialType);
     }
 
     void OnDestroy() {
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {     
         if(!this.blockPlayerInput) {
             if(Input.GetButtonDown("Jump") && isOnGround) {

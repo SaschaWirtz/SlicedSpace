@@ -10,16 +10,14 @@ public class PauseMenu : MonoBehaviour
 
     public static PauseMenu P1;
 
-    Button button;
-
     void Awake (){
         P1 = this;
+        this.pauseMenu.SetActive(false);
+        transform.Find("Resume").GetComponent<Button>().Select();
     }
     
     public void Pause()
     {
-        button = GetComponent<Button>();
-        button.Select(); 
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;   
         
