@@ -53,9 +53,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {     
-        if(!this.blockPlayerInput) {
+    void Update()
+    {
+        if(!(this.blockPlayerInput || Time.timeScale == 0)) {
             if(Input.GetButtonDown("Jump") && isOnGround) {
                 this.animator.SetBool("Jumping", true);
                 rb.drag = 1;
