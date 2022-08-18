@@ -53,6 +53,17 @@ public class MainSceneCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKeyDown && !GlobalInformation.getInstance().introPlayed && !uiElements[0].activeSelf) {
+            GameObject
+                .Find("IntroPlayer")
+                .GetComponent<VideoPlayer>().Stop();
+
+            foreach (GameObject uiElement in uiElements) {
+                uiElement.SetActive(true);
+            }
+
+            GlobalInformation.getInstance().introPlayed = true;
+        }
 
     }
 
