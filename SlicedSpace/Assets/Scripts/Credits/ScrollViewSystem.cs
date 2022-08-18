@@ -5,12 +5,7 @@ public class ScrollViewSystem : MonoBehaviour
 {
     private ScrollRect _scrollRect;
 
-    [SerializeField] private ScrollButton _leftButton;
-    [SerializeField] private ScrollButton _rightButton;
-    [SerializeField] private ScrollButton _bottomButton;
-    [SerializeField] private ScrollButton _topButton;
-
-    [SerializeField] public float scrollSpeed = 0.0000001f;
+    [SerializeField] public int scrollSpeedDivider = 100;
 
     void Start()
     {
@@ -19,54 +14,19 @@ public class ScrollViewSystem : MonoBehaviour
 
     void Update()
     {
-        if(_leftButton != null){
-            if(_leftButton.isDown){
-                ScrollLeft();
-            }
-        }if(_rightButton != null){
-            if(_rightButton.isDown){
-                ScrollRight();
-            }
-        }if(_bottomButton != null){
-            if(_bottomButton.isDown){
-                ScrollBottom();
-            }
-        }if(_topButton != null){
-            if(_topButton.isDown){
-                ScrollTop();
-            }
-        }
-    }
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-    public void ScrollLeft(){
-        if(_scrollRect != null){
-            if(_scrollRect.horizontalNormalizedPosition >= 0f){
-                _scrollRect.horizontalNormalizedPosition -= scrollSpeed;
-            }
+        if (horizontalInput < 0f && _scrollRect.horizontalNormalizedPosition >= 0f) {
+            _scrollRect.horizontalNormalizedPosition += horizontalInput / this.scrollSpeedDivider;
+        } else if (horizontalInput > 0f && _scrollRect.horizontalNormalizedPosition <= 1f) {
+            _scrollRect.horizontalNormalizedPosition += horizontalInput / this.scrollSpeedDivider;
         }
-    }
 
-    public void ScrollRight(){
-        if(_scrollRect != null){
-            if(_scrollRect.horizontalNormalizedPosition <= 1f){
-                _scrollRect.horizontalNormalizedPosition += scrollSpeed;
-            }
-        }
-    }
-
-    public void ScrollTop(){
-        if(_scrollRect != null){
-            if(_scrollRect.verticalNormalizedPosition <= 1f){
-                _scrollRect.verticalNormalizedPosition += scrollSpeed;
-            }
-        }
-    }
-
-    public void ScrollBottom(){
-        if(_scrollRect != null){
-            if(_scrollRect.verticalNormalizedPosition >= 0f){
-                _scrollRect.verticalNormalizedPosition -= scrollSpeed;
-            }
+        if (verticalInput < 0f && _scrollRect.verticalNormalizedPosition >= 0f) {
+            _scrollRect.verticalNormalizedPosition += verticalInput / this.scrollSpeedDivider;
+        } else if (verticalInput > 0f && _scrollRect.verticalNormalizedPosition <= 1f) {
+            _scrollRect.verticalNormalizedPosition += verticalInput / this.scrollSpeedDivider;
         }
     }
 }
