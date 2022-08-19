@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
-
+    [SerializeField] 
+    GameObject pauseMenu;
     public static PauseMenu P1;
     GameObject startButtonClicked;
     GameObject exitButtonClicked;
@@ -19,6 +20,8 @@ public class PauseMenu : MonoBehaviour
     AudioSource popcornBag_crumble;
     AudioSource doorOpen_exit;
     bool closePauseMenu = false;
+    private float lastVolume;
+    public AudioMixer mixer;
     
     void Start() {
         this.sounds = GetComponents<AudioSource>();
@@ -52,34 +55,40 @@ public class PauseMenu : MonoBehaviour
     
     public void Pause()
     {
+        this.mixer.GetFloat("MasterVolume", out float tempLastVolume);
+        Debug.Log(Mathf.Pow(10, tempLastVolume / 20));
+        this.lastVolume = Mathf.Pow(10, tempLastVolume / 20);
+        this.mixer.SetFloat("MasterVolume", Mathf.Log10(this.lastVolume / 2) * 20);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;   
     }
 
     public void Resume()
     {
-        this.ResumeCo();
+        StartCoroutine(ResumeCo());
     }
 
-    async void ResumeCo() {
+    IEnumerator ResumeCo() {
+        this.mixer.SetFloat("MasterVolume", Mathf.Log10(this.lastVolume) * 20);
         this.popcornBag_crumble.Play();
         GameObject.Find("start-button").SetActive(false);
         this.startButtonClicked.SetActive(true);
-        await Task.Delay(700);
+        yield return new WaitForSecondsRealtime(0.7f);
         this.closePauseMenu = true;
         Time.timeScale = 1f;
     }
 
     public void Home(int sceneID)
     {
-        this.HomeCo(sceneID);
+        StartCoroutine(HomeCo(sceneID));
     }
 
-    async void HomeCo(int sceneID) {
+    IEnumerator HomeCo(int sceneID) {
+        this.mixer.SetFloat("MasterVolume", Mathf.Log10(this.lastVolume) * 20);
         this.doorOpen_exit.Play();
         GameObject.Find("exit-button").SetActive(false);
         this.exitButtonClicked.SetActive(true);
-        await Task.Delay(700);
+        yield return new WaitForSecondsRealtime(0.7f);
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneID); 
     }

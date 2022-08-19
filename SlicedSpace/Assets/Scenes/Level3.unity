@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5332445, g: 0.66187847, b: 0.88020927, a: 1}
+  m_IndirectSpecularColor: {r: 0.53323597, g: 0.6618828, b: 0.88021016, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 601110212}
+  mixer: {fileID: 24100000, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
 --- !u!82 &601110215
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2872,7 +2873,6 @@ GameObject:
   - component: {fileID: 858897269}
   - component: {fileID: 858897268}
   - component: {fileID: 858897267}
-  - component: {fileID: 858897266}
   m_Layer: 5
   m_Name: Home
   m_TagString: UIElement
@@ -2903,18 +2903,6 @@ RectTransform:
   m_AnchoredPosition: {x: -750.00006, y: -101}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &858897266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858897264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77be712022374034789248b775aaab74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &858897267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8075,6 +8063,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8417129059328107229, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8804773703675141687, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
+    - target: {fileID: 8417129059830783304, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8804773703675141687, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
+    - target: {fileID: 8417129060919215380, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8804773703675141687, guid: efd0e3a2b16031d46a2db5c4a3f2c2c6, type: 2}
     - target: {fileID: 8635623010090221428, guid: 5953ad22cfb4ac94d821b48face17d77, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -43,7 +43,6 @@ public class EnemyMovement : MonoBehaviour
         ));
         foreach(Collider collider in colliders) {
             if(!(collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Butter") || collider.gameObject.CompareTag("Plane"))) {
-                Debug.Log(collider.gameObject.name);
                 collisions++;
             }
         }

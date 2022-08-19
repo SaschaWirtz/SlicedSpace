@@ -95,17 +95,22 @@ public class PlayerMovement : MonoBehaviour
         isOnGround = true;
     }
 
-    private async void OnCollisionEnter(Collision collision) {
+    private void OnCollisionEnter(Collision collision) {
+        StartCoroutine(this.OnCollisionEnterCo(collision));
+    }
+
+    IEnumerator OnCollisionEnterCo(Collision collision) {
         if(collision.gameObject.CompareTag("Ground")){
             this.animator.SetBool("Jumping", false);
             isOnGround = true;
         } else if(collision.gameObject.name == "Ground") {
             this.loseLifeReset();
             blockPlayerInput = true;
-            await Task.Delay(2000);
+            yield return new WaitForSeconds(1f);
             blockPlayerInput = false;
         }
     }
+
     private void switchOrientation() {
         if(!this.blockSwitch) {
             isSwitched = !isSwitched;
@@ -137,8 +142,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private async void reset2DVisibility() {
-        await Task.Delay(1);
+    private void reset2DVisibility() {
+        StartCoroutine(reset2DVisibilityCo());
+    }
+
+    IEnumerator reset2DVisibilityCo() {
+        yield return new WaitForSeconds(0.01f);
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         foreach (GameObject currentObject in allObjects) {
             if (!currentObject.CompareTag("Player")) {
