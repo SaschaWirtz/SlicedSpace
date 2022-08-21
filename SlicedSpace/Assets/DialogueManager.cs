@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public enum TutorialType{
     noTutorial,
     movementTutorial,
-    mapTutorial
+    mapTutorial,
+    enemyTutorial
 }
 
 public class DialogueManager : MonoBehaviour
@@ -18,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     private TutorialType tutorialType = TutorialType.noTutorial;
     private bool nextScene = false;
+    private bool lastLevel = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +33,13 @@ public class DialogueManager : MonoBehaviour
             GameObject.Find("Panel").GetComponent<Image>().enabled = false;
             GameObject.Find("Movement").GetComponent<Image>().enabled = false;
             GameObject.Find("Map").GetComponent<Image>().enabled = false;
+            GameObject.Find("Enemy").GetComponent<Image>().enabled = false;
         }
     }
 
     public void StartDialogue(Dialogue dialogue, TutorialType tutorialType) {
         this.nextScene = dialogue.nextScene;
+        this.lastLevel = dialogue.lastLevel;
         FindObjectsOfType<PlayerMovement>()[0].blockPlayerInput = true;
         this.tutorialType = tutorialType;
         this.animator.SetBool("IsOpen", true);
@@ -74,13 +79,21 @@ public class DialogueManager : MonoBehaviour
                 GameObject.Find("Panel").GetComponent<Image>().enabled = true;
                 GameObject.Find("Map").GetComponent<Image>().enabled = true;
                 break;
+            case TutorialType.enemyTutorial:
+                GameObject.Find("Panel").GetComponent<Image>().enabled = true;
+                GameObject.Find("Enemy").GetComponent<Image>().enabled = true;
+                break;
             default:
-            break;
+                break;
         }
         this.tutorialType = TutorialType.noTutorial;
         StartCoroutine(this.enablePlayerInput());
         if(this.nextScene) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if(this.lastLevel) {
+                SceneManager.LoadScene(0);
+            }else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 

@@ -7,6 +7,7 @@ public class Dialogue
 {
     public string name;
     public bool nextScene = false;
+    public bool lastLevel = false;
 
     [NonReorderable]
     [TextArea(3, 10)]
