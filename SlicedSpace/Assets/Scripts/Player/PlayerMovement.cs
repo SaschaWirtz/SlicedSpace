@@ -143,11 +143,6 @@ public class PlayerMovement : MonoBehaviour
     }
     
     private void reset2DVisibility() {
-        StartCoroutine(reset2DVisibilityCo());
-    }
-
-    IEnumerator reset2DVisibilityCo() {
-        yield return new WaitForSeconds(0.01f);
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         foreach (GameObject currentObject in allObjects) {
             if (!currentObject.CompareTag("Player")) {

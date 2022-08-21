@@ -39,7 +39,6 @@ public class PauseMenu : MonoBehaviour
     void Awake (){
         P1 = this;
         this.pauseMenu.SetActive(false);
-        transform.Find("Resume").GetComponent<Button>().Select();
     }
 
     void FixedUpdate() {
@@ -55,10 +54,10 @@ public class PauseMenu : MonoBehaviour
     
     public void Pause()
     {
-        this.mixer.GetFloat("MasterVolume", out float tempLastVolume);
-        Debug.Log(Mathf.Pow(10, tempLastVolume / 20));
-        this.lastVolume = Mathf.Pow(10, tempLastVolume / 20);
-        this.mixer.SetFloat("MasterVolume", Mathf.Log10(this.lastVolume / 2) * 20);
+        transform.Find("Resume").GetComponent<Button>().Select();
+
+        GameObject.Find("Player").GetComponent<AudioSource>().Stop();
+
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;   
     }
@@ -69,13 +68,13 @@ public class PauseMenu : MonoBehaviour
     }
 
     IEnumerator ResumeCo() {
-        this.mixer.SetFloat("MasterVolume", Mathf.Log10(this.lastVolume) * 20);
         this.popcornBag_crumble.Play();
         GameObject.Find("start-button").SetActive(false);
         this.startButtonClicked.SetActive(true);
         yield return new WaitForSecondsRealtime(0.7f);
         this.closePauseMenu = true;
         Time.timeScale = 1f;
+        GameObject.Find("Player").GetComponent<AudioSource>().Play();
     }
 
     public void Home(int sceneID)
@@ -84,7 +83,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     IEnumerator HomeCo(int sceneID) {
-        this.mixer.SetFloat("MasterVolume", Mathf.Log10(this.lastVolume) * 20);
         this.doorOpen_exit.Play();
         GameObject.Find("exit-button").SetActive(false);
         this.exitButtonClicked.SetActive(true);

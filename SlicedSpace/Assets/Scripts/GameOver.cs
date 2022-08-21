@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] GameObject gameOver;
-
-
+    [SerializeField] 
+    GameObject gameOver;
     Button button;
     
     public void tryAgain()
@@ -20,5 +19,4 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-   
 }
